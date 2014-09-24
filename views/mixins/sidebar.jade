@@ -1,0 +1,59 @@
+mixin _sidebarsubmenu(items)
+  ul(class='sub-menu')
+  each menu in items
+    - var parentCssClasses = [];
+    - var menuHref = menu.href || "#";
+    - if (isActive(menuHref)) parentCssClasses.push("active");
+    li(class='#{parentCssClasses.join(" ")}')
+      a(href='#{req.req.baseUrl}#{menuHref}')
+        if menu.faicon
+          i(class='fa #{menu.faicon}')
+          span #{menu.title}
+        else
+          | #{menu.title}
+
+
+mixin _sidebarmenu(items)
+  ul.cl-vnavigation
+  each menu in items
+    - var parentCssClasses = [];
+    - if(menu.submenu && menu.submenu.length > 0) parentCssClasses.push("parent");
+    - var menuHref = menu.href || "#";
+    li(class='#{parentCssClasses.join(" ")}')
+      a(href='#{req.baseUrl}#{menuHref}')
+        if menu.faicon
+          i(class='fa #{menu.faicon}')
+          span #{menu.title}
+        else
+          | #{menu.title}
+      if menu.submenu && menu.submenu.length
+        +_sidebarsubmenu(menu.submenu)
+
+mixin _userprofile(user)
+  div.side-user
+    div.avatar
+      img(src='#{gravatar("fritztho@gmail.com")}&s=50', alt='Avatar')
+      div.info
+        a(href='#') #{user.displayName}
+        i(class="fa fa-circle status status-#{user.status.toLowerCase()}")
+        span &nbsp;#{user.statusText}
+
+
+mixin sidebar(items, user)
+  div.cl-sidebar
+    div.cl-toggle
+      i.fa.fa-bars
+    div.cl-navblock
+      div.menu-space.nano
+        div.content.nano-content(tabindex="0")
+          if user
+            +_userprofile(user)
+          if items && items.length > 0
+            +_sidebarmenu(items)
+    //
+        div.text-right.collapse-button(style='padding: 7px 9px;')
+            input.form-control.search(type='text', placeholder='Search...',style='color:whitesmoke;')
+            button#sidebar-collapse.btn.btn-default(style='')
+                i.fa.fa-angle-left(style='color: #fff;')
+
+

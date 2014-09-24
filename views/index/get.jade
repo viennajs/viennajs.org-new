@@ -1,0 +1,18 @@
+extends /layouts/default
+
+block content
+  for event in events
+    section.block-flat
+      div.header
+        h2
+          a(href="#{req.baseUrl}/events/#{event.id}-#{slug(event.name)}") #{event.name}
+      div.content
+        p!= event.description
+        | Comments: #{event.comment_count}<br>
+        | Yes: #{event.yes_rsvp_count}<br>
+        | Maybe: #{event.maybe_rsvp_count}<br/>
+        | Time: #{moment(event.time).format()}
+
+block pagehead
+  - var breadcrumbs = [{"name": "Events", "href":"/", "active": true}];
+  +pagehead("Events", breadcrumbs)

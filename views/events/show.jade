@@ -1,0 +1,46 @@
+extends /layouts/default
+
+
+block content
+  div.row
+    div.col-sm-12
+      div.block-flat
+        div.content
+          p!= event.description
+    div.col-sm-6
+      div.block-transparent
+        div.header
+          h4 Timeline
+        ul.timeline
+          for comment in comments
+            - var d = moment(comment.time);
+            li
+              i.fa.fa-comment
+              span.date(title=d.format()) #{d.format('D. M.')}
+              div.content
+                p
+                  strong #{comment.member_name}
+                  br
+                  | !{comment.comment}
+                  br
+                  strong #{d.startOf('day').fromNow()}
+    div.col-sm-6
+      div.block-flat
+        div.header
+          h3 #{rsvps.length} yes
+        div.content
+          ul.list-group.tickets
+            for rsvp in rsvps
+              li.list-group-item(href='#')
+                if rsvp.member_photo && rsvp.member_photo.thumb_link
+                  img.avatar(src=rsvp.member_photo.thumb_link)
+                h4.name= rsvp.member.name
+                p= rsvp.member.bio
+
+
+
+
+
+block pagehead
+  - var breadcrumbs = [{"name": "Events", "href":"/"}, {"name": event.name, "href":"/events/"+event.id+"-"+slug(event.name), "active": true}];
+  +pagehead(event.name, breadcrumbs)

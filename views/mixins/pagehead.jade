@@ -1,0 +1,17 @@
+mixin breadcrumbs(items)
+    ol.breadcrumb
+        each crumb in breadcrumbs
+            - var active = crumb.active ? crumb.active : isActive(crumb.href);
+            - var activeClass = active ? "active" : "";
+            li(class=activeClass)
+                if active
+                    = crumb.name
+                else
+                    a(href=req.baseUrl + crumb.href)= crumb.name
+
+mixin pagehead(title, breadcrumbs)
+    div.page-head
+        h2= title
+        if breadcrumbs && breadcrumbs.length > 0
+            +breadcrumbs(breadcrumbs)
+

@@ -1,0 +1,11 @@
+mixin messages(messages)
+    if messages && messages.length > 0
+        each message, index in messages
+            div(class="alert alert-#{message.type} alert-white rounded")
+                button.close(type="button",data-dismiss="alert",aria-hidden="true") &times;
+                div.icon
+                    i.fa.fa-check
+                if message.title
+                    strong #{message.title}&nbsp;
+                if message.text
+                    = message.text

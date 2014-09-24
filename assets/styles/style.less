@@ -1,0 +1,89 @@
+@red: #ec0000;
+@topmenu: #33352D;
+@leftmenu: #4A5250;
+
+body {
+  opacity: 1;
+}
+
+.fa.status {
+  color: slategrey;
+}
+
+.fa.status.status-online {
+  color: limegreen;
+}
+
+.fa.status.status-offline {
+  color: slategrey;
+}
+
+.navbar {
+  background-color: @topmenu;
+}
+
+.navbar-default .navbar-toggle,
+.navbar-default .navbar-toggle:hover,
+.navbar-default .navbar-toggle:active,
+.navbar-default .navbar-toggle:focus {
+  border: 0;
+  box-shadow: none;
+  background-color: @topmenu;
+  cursor: pointer;
+  .fa {
+    font-size: 24px;
+  }
+}
+
+.navbar-default {
+  .navbar-brand {
+    background: url(../images/viejs-32x32.png) no-repeat 0 9px;
+  }
+}
+
+#user-image {
+  width: 30px;
+  border-radius: 25px;
+}
+
+.cl-sidebar, .sb-collapsed .cl-sidebar {
+  background-color: @leftmenu;
+}
+
+#cl-wrapper.fixed-menu .menu-space {
+  background-color: @leftmenu;
+}
+
+.profile-info .avatar img {
+  width: auto;
+}
+
+
+.btn-meetup {
+  color: #fff!important;
+  background: #e0393e;
+  font-size: 12px;
+  padding: 5px 14px;
+  display: inline-block;
+  zoom: 1;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  padding: 9px 18px 7px;
+  font-family: Whitney,helvetica,arial,sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  text-decoration: none!important;
+  border-width: 0;
+  text-align: center;
+  cursor: pointer;
+}
+
+a.btn-meetup:hover {
+  background: #851518!important;
+}
+
+.navbar-default .navbar-brand {
+  width: auto;
+}
+
