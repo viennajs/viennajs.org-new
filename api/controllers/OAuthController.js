@@ -17,7 +17,7 @@ module.exports = {
         sails.log.error(error);
         return res.send(400, "An error occured");
       }
-      User.findOrCreate({ id : user.id }, user, function (error, user) {
+      User.findOrCreate({ externId : user.externId }, user, function (error, user) {
         if (error) {
           sails.log.error(error);
           return res.send(400, "An error occured");

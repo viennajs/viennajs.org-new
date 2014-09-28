@@ -29,11 +29,15 @@ authenticate = function (provider) {
       $("#profile-link").attr("href", data.link);
       $("#user-image").attr("src", data.image);
       $('.signup-button').hide();
+      if(!data.email) {
+          $("#modal-uuid").val(data.uuid);
+          $('.md-trigger').trigger("click");
+      }
       return $('.profile_menu').removeClass("hidden");
     }).fail(function (error) {
-      return console.log("error1");
+      return console.log("Login Error");
     });
   }).fail(function (error) {
-    return console.log("error2");
+    return console.log("OAuthio Error");
   });
 };
