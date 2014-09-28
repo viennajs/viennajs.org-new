@@ -15,8 +15,10 @@ html(lang="en")
     link(href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.min.css", rel="stylesheet")
     link(href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/css/bootstrap.min.css", rel="stylesheet")
     link(href="//cdnjs.cloudflare.com/ajax/libs/jquery.nanoscroller/0.8.4/css/nanoscroller.css", rel="stylesheet")
+    link(href="/styles/component.css", rel="stylesheet")
     // STYLES
     link(rel="stylesheet", href="/vendors/cleanzone/css/style.css")
+    link(rel="stylesheet", href="/styles/component.css")
     link(rel="stylesheet", href="/styles/style.css")
     // STYLES END
     link(rel="icon", href="#{req.baseUrl}/favicon.ico", type="image/x-icon")
@@ -29,7 +31,9 @@ html(lang="en")
         block pagehead
         div.cl-mcont
           +messages(messages)
+          +modal()
           block content
+
     script.
       var oauthio = "#{sails.config.oauthio.public}";
     script(src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js")
@@ -37,6 +41,8 @@ html(lang="en")
     script(src="//cdnjs.cloudflare.com/ajax/libs/react/0.11.2/react.min.js")
     script(src="//cdnjs.cloudflare.com/ajax/libs/jquery.nanoscroller/0.8.4/javascripts/jquery.nanoscroller.min.js")
     script(src="//oauth.io/auth/download/latest/oauth.js")
+    script(src="/js/jquery.modalEffects.js")
+
     // SCRIPTS
     script(src="/js/dependencies/sails.io.js")
     script(src="/js/init.js")

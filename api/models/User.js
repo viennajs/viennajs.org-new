@@ -12,15 +12,17 @@ module.exports = {
   attributes: {
 
     uuid: {
-      type: 'string',
-      primaryKey: true,
-      unique: true,
-      required: true,
-      uuidv4: true
+        type: 'STRING',
+        primaryKey: true,
+        uuidv4: true,
+        defaultsTo: uuid.v4
     },
     name: {
         type: 'string',
         required: true
+    },
+    email: {
+        type: 'email'
     },
     image: {
         type: 'string'
@@ -28,17 +30,9 @@ module.exports = {
     link: {
         type: 'string'
     },
-    id: {
+    externId: {
         type: 'integer'
     }
-  },
-
-
-  beforeValidate: function (values, next) {
-    if (_.isEmpty(values.uuid)) {
-      values.uuid = uuid.v4();
-    }
-    next();
   }
 };
 
