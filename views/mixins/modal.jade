@@ -1,0 +1,15 @@
+mixin modal()
+    button.hidden.md-trigger(data-modal='form-primary')
+    #form-primary.md-modal.colored-header.custom-width.md-effect-9(style='perspective: 1300px;')
+        .md-content
+            .modal-header
+                h3 Form Modal
+                button.close.md-close(type='button', data-dismiss='modal', aria-hidden='true') ×
+            input#modal-uuid.form-control(type='hidden')
+            .modal-body.form
+                .form-group
+                    label Email address
+                    input#modal-email.form-control(type='email', placeholder='username@example.com')
+            .modal-footer
+                button.btn.btn-default.btn-flat.md-close(type='button', data-dismiss='modal') Cancel
+                button.btn.btn-primary.btn-flat.md-close(type='button', data-dismiss='modal') Proceed

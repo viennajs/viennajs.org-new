@@ -1,4 +1,4 @@
 module.exports.oauthio = {
-  public: "aaaaaaa",
-  private: "bbbbbbbb"
-};
+    public : "aaaaaaa",
+    private : "bbbbbbbb"
+}

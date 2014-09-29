@@ -100,6 +100,35 @@
   duration = 500;
   button = $("<a href=\"#\" class=\"back-to-top\"><i class=\"fa fa-angle-up\"></i></a>");
   button.appendTo("body");
+    $('.md-trigger').modalEffects({
+        afterClose: function(button, modal) {
+            $('.md-trigger').removeClass('highlighted');
+            $(button).addClass('highlighted');
+            $('#afterclose')
+                .removeClass('invisible')
+                .html('Just closed modal: "'+ $(button).html() + '"');
+            setTimeout(function(){
+                $(button).removeClass('highlighted');
+                $('#afterclose').addClass('invisible');
+            }, 3000);
+        }
+    });
+
+  $('.md-close').click(function(e) {
+    var email = $('#modal-email').val()
+    var uuid = $('#modal-uuid').val()
+    $.ajax({
+      url: '/User/'+uuid,
+      type: 'PUT',
+      data: {email: email},
+      success: function(response) {
+          console.log(response)
+          //TODO: Error handling
+          //when no email, validation error
+      }
+    });
+  })
+
   jQuery(window).scroll(function () {
     if (jQuery(this).scrollTop() > offset) {
       jQuery(".back-to-top").fadeIn(duration);

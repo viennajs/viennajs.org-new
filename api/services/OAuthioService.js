@@ -10,7 +10,7 @@ module.exports = {
       name: info.name,
       image: info.raw.photo.thumb_link,
       link: info.raw.link,
-      id: info.raw.id
+      externId: info.raw.id
     };
   },
 
@@ -20,7 +20,7 @@ module.exports = {
       name: info.alias,
       image: info.avatar,
       link: info.raw.html_url,
-      id: 0 //check out the info for the correct id
+      externId: 0 //check out the info for the correct id
     };
   },
   stateToken: function (session) {
